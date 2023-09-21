@@ -9,13 +9,13 @@ RUN git clone https://github.com/89luca89/distrobox.git --single-branch /tmp/dis
     rm -drf /tmp/distrobox
 
 # Set up cleaner Distrobox integration
-RUN wget https://copr.fedorainfracloud.org/coprs/kylegospo/distrobox-utils/repo/fedora-39/kylegospo-distrobox-utils-fedora-39.repo -O /etc/yum.repos.d/_copr_kylegospo-distrobox-utils.repo && \
+RUN wget https://copr.fedorainfracloud.org/coprs/kylegospo/distrobox-utils/repo/fedora-$(rpm -E %fedora)/kylegospo-distrobox-utils-fedora-$(rpm -E %fedora).repo -O /etc/yum.repos.d/_copr_kylegospo-distrobox-utils.repo && \
     dnf install -y \
         xdg-utils-distrobox \
         adw-gtk3-theme && \
     ln -s /usr/bin/distrobox-host-exec /usr/bin/flatpak
 
-# Install packages required by Distrobox
+# Install packages required by Distrobox, this speeds up the first-run time
 RUN dnf install -y \
         bash-completion \
         bc \
