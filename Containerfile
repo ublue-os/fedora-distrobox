@@ -76,3 +76,6 @@ RUN dnf install -y \
         nvidia-vaapi-driver && \
     dnf swap -y mesa-va-drivers mesa-va-drivers-freeworld && \
     dnf swap -y mesa-vdpau-drivers mesa-vdpau-drivers-freeworld
+
+# Cleanup
+RUN rm -rf /tmp/*
