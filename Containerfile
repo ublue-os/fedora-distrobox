@@ -65,6 +65,14 @@ RUN dnf install -y \
         zip \
         mesa-dri-drivers \
         mesa-vulkan-drivers \
-        vulkan && \
-    rm -rf \
-        /tmp/*
+        vulkan
+
+# Install RPMFusion for hardware accelerated encoding/decoding
+RUN dnf install -y \
+        https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
+        https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm && \
+    dnf install -y \
+        intel-media-driver \
+        nvidia-vaapi-driver && \
+    dnf swap -y mesa-va-drivers mesa-va-drivers-freeworld && \
+    dnf swap -y mesa-vdpau-drivers mesa-vdpau-drivers-freeworld
