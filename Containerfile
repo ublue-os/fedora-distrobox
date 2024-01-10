@@ -9,6 +9,7 @@ RUN dnf install -y \
         diffutils \
         dnf-plugins-core \
         findutils \
+        fish \
         glibc-all-langpacks \
         glibc-locale-source \
         gnupg2 \
@@ -51,7 +52,8 @@ RUN dnf install -y \
         zip \
         mesa-dri-drivers \
         mesa-vulkan-drivers \
-        vulkan
+        vulkan \
+        zsh
 
 # Set up dependencies
 RUN git clone https://github.com/89luca89/distrobox.git --single-branch /tmp/distrobox && \
