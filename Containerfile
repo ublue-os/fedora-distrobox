@@ -2,6 +2,7 @@ FROM registry.fedoraproject.org/fedora-toolbox:39 AS fedora-distrobox
 
 # Install packages required by Distrobox, this speeds up the first-run time
 RUN dnf install -y \
+        dnf5 \
         bash-completion \
         bc \
         bzip2 \
